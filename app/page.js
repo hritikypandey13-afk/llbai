@@ -46,111 +46,170 @@ export default function Home() {
     <main
       style={{
         fontFamily: "Arial, sans-serif",
-        background: "#0b1c3f",
+        background: "linear-gradient(135deg, #08162f 0%, #102a5c 45%, #1f3b8a 100%)",
         color: "white",
         minHeight: "100vh",
-        padding: "30px",
+        padding: "30px 20px",
+        position: "relative",
+        overflow: "hidden",
       }}
     >
-      <div style={{ display: "flex", alignItems: "center", gap: "14px" }}>
-        <img
-          src="/llb-logo.png"
-          alt="LLBAI Logo"
-          style={{ width: "64px", height: "64px", objectFit: "contain" }}
-        />
-        <div>
-          <h2 style={{ margin: 0, fontSize: "48px" }}>LLBAI</h2>
-          <p style={{ margin: 0, color: "#d5d9e3" }}>Unlock The World Of Law</p>
-        </div>
-      </div>
-
-      <div style={{ textAlign: "center", marginTop: "50px" }}>
-        <h1 style={{ fontSize: "62px", marginBottom: "16px" }}>
-          Unlock The World Of Law
-        </h1>
-        <p style={{ fontSize: "20px", color: "#d5d9e3" }}>
-          AI-powered legal drafting, research & automation
-        </p>
-      </div>
+      <div
+        style={{
+          position: "absolute",
+          inset: 0,
+          background:
+            "radial-gradient(circle at 15% 20%, rgba(255,215,0,0.12), transparent 28%), radial-gradient(circle at 85% 25%, rgba(255,255,255,0.08), transparent 22%), radial-gradient(circle at 70% 80%, rgba(255,215,0,0.08), transparent 25%)",
+          pointerEvents: "none",
+        }}
+      />
 
       <div
         style={{
-          maxWidth: "1000px",
-          margin: "40px auto 0",
-          background: "#132a5e",
-          borderRadius: "16px",
-          padding: "24px",
+          maxWidth: "1150px",
+          margin: "0 auto",
+          position: "relative",
+          zIndex: 1,
         }}
       >
-        <h3 style={{ marginTop: 0 }}>Generate Your Draft</h3>
-
-        <label style={{ display: "block", marginBottom: "10px" }}>
-          Draft Type
-        </label>
-        <select
-          value={draftType}
-          onChange={(e) => setDraftType(e.target.value)}
+        <div
           style={{
-            width: "100%",
-            padding: "12px",
-            borderRadius: "8px",
-            marginBottom: "18px",
-            fontSize: "16px",
+            display: "flex",
+            alignItems: "center",
+            gap: "14px",
+            marginBottom: "30px",
           }}
         >
-          <option>Legal Notice</option>
-          <option>Police Complaint</option>
-          <option>Application</option>
-          <option>Synopsis</option>
-          <option>Bail Application</option>
-        </select>
+          <img
+            src="/llb-logo.png"
+            alt="LLBAI Logo"
+            style={{ width: "64px", height: "64px", objectFit: "contain" }}
+          />
+          <div>
+            <h2 style={{ margin: 0, fontSize: "42px" }}>LLBAI</h2>
+            <p style={{ margin: 0, color: "#d5d9e3", fontSize: "15px" }}>
+              Unlock The World Of Law
+            </p>
+          </div>
+        </div>
 
-        <label style={{ display: "block", marginBottom: "10px" }}>
-          Enter Facts / Instructions
-        </label>
-        <textarea
-          value={prompt}
-          onChange={(e) => setPrompt(e.target.value)}
-          placeholder="Example: Draft a legal notice for non-payment of professional fees despite repeated reminders..."
-          style={{
-            width: "100%",
-            minHeight: "180px",
-            padding: "14px",
-            borderRadius: "10px",
-            fontSize: "16px",
-            resize: "vertical",
-            marginBottom: "18px",
-          }}
-        />
-
-        <button
-          onClick={generateDraft}
-          style={{
-            padding: "14px 24px",
-            background: "#FFD700",
-            color: "#000",
-            border: "none",
-            borderRadius: "8px",
-            cursor: "pointer",
-            fontWeight: "bold",
-            fontSize: "16px",
-          }}
-        >
-          {loading ? "Generating..." : "Generate Draft"}
-        </button>
+        <div style={{ textAlign: "center", marginTop: "40px", marginBottom: "40px" }}>
+          <h1
+            style={{
+              fontSize: "56px",
+              marginBottom: "16px",
+              lineHeight: 1.1,
+            }}
+          >
+            Unlock The World Of Law
+          </h1>
+          <p
+            style={{
+              fontSize: "20px",
+              color: "#d5d9e3",
+              maxWidth: "760px",
+              margin: "0 auto",
+              lineHeight: 1.6,
+            }}
+          >
+            AI-powered legal drafting, research, and practical assistance for
+            law students, young lawyers, and working professionals.
+          </p>
+        </div>
 
         <div
           style={{
-            marginTop: "24px",
-            background: "#0f2149",
-            padding: "18px",
-            borderRadius: "12px",
-            whiteSpace: "pre-wrap",
-            lineHeight: 1.6,
-            minHeight: "160px",
+            maxWidth: "1000px",
+            margin: "40px auto 0",
+            background: "rgba(255,255,255,0.06)",
+            backdropFilter: "blur(12px)",
+            border: "1px solid rgba(255,255,255,0.12)",
+            borderRadius: "18px",
+            padding: "26px",
+            boxShadow: "0 12px 40px rgba(0,0,0,0.25)",
           }}
         >
-          {result || "Your generated draft will appear here."}
+          <h3 style={{ marginTop: 0, fontSize: "28px", marginBottom: "22px" }}>
+            Generate Your Draft
+          </h3>
+
+          <label style={{ display: "block", marginBottom: "10px", fontWeight: 600 }}>
+            Draft Type
+          </label>
+          <select
+            value={draftType}
+            onChange={(e) => setDraftType(e.target.value)}
+            style={{
+              width: "100%",
+              padding: "12px",
+              borderRadius: "10px",
+              marginBottom: "18px",
+              fontSize: "16px",
+              border: "1px solid rgba(255,255,255,0.15)",
+              background: "rgba(255,255,255,0.95)",
+              color: "#111",
+            }}
+          >
+            <option>Legal Notice</option>
+            <option>Police Complaint</option>
+            <option>Application</option>
+            <option>Synopsis</option>
+            <option>Bail Application</option>
+          </select>
+
+          <label style={{ display: "block", marginBottom: "10px", fontWeight: 600 }}>
+            Enter Facts / Instructions
+          </label>
+          <textarea
+            value={prompt}
+            onChange={(e) => setPrompt(e.target.value)}
+            placeholder="Example: Draft a legal notice for non-payment of professional fees despite repeated reminders..."
+            style={{
+              width: "100%",
+              minHeight: "180px",
+              padding: "14px",
+              borderRadius: "10px",
+              fontSize: "16px",
+              resize: "vertical",
+              marginBottom: "18px",
+              border: "1px solid rgba(255,255,255,0.15)",
+              background: "rgba(255,255,255,0.96)",
+              color: "#111",
+              boxSizing: "border-box",
+            }}
+          />
+
+          <button
+            onClick={generateDraft}
+            style={{
+              padding: "14px 24px",
+              background: "linear-gradient(45deg, #FFD700, #ffcc00)",
+              boxShadow: "0 4px 20px rgba(255,215,0,0.3)",
+              color: "#000",
+              border: "none",
+              borderRadius: "10px",
+              cursor: "pointer",
+              fontWeight: "bold",
+              fontSize: "16px",
+            }}
+          >
+            {loading ? "Generating..." : "Generate Draft"}
+          </button>
+
+          <div
+            style={{
+              marginTop: "24px",
+              background: "rgba(7, 20, 46, 0.82)",
+              padding: "18px",
+              borderRadius: "12px",
+              whiteSpace: "pre-wrap",
+              lineHeight: 1.7,
+              minHeight: "180px",
+              border: "1px solid rgba(255,255,255,0.08)",
+            }}
+          >
+            {result || "Your generated draft will appear here."}
+          </div>
         </div>
       </div>
     </main>
